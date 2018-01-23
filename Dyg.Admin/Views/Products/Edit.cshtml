@@ -1,0 +1,89 @@
+﻿@model Dyg.Core.Model.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Düzenle</h2>
+        <div class="col-md-4">
+            <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                        <option value="">Seçiniz</option>
+                    </select>
+
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BrandId" class="control-label"></label>
+                    <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId">
+                        <option value="">Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="BrandId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label"></label>
+                    <img src="~/uploads/@Model.Photo" class="img img-thumbnail" style="max-width:100px;" />
+                    <input type="file" name="upload" class="form-control" />
+                    <input asp-for="Photo" type="hidden" />
+
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Stock" class="control-label"></label>
+                    <input asp-for="Stock" class="form-control" />
+                    <span asp-validation-for="Stock" class="text-danger"></span>
+                </div>
+
+                <input asp-for="CreateDate" type="hidden" class="form-control" />
+
+                <input asp-for="CreatedBy" type="hidden" class="form-control" />
+
+                <div class="form-group">
+                    <label asp-for="PublishDate" class="control-label"></label>
+                    <input asp-for="PublishDate" class="form-control" />
+                    <span asp-validation-for="PublishDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="IsPublished" /> @Html.DisplayNameFor(model => model.IsPublished)
+                        </label>
+                    </div>
+                </div>
+
+                <input asp-for="UpdateDate" type="hidden" class="form-control" />
+
+                <input asp-for="UpdatedBy" type="hidden" class="form-control" />
+
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-primary" asp-route-id="@Model.Id" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Listeye Geri Dön</a>
+    </div>
+    </div>
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

@@ -1,0 +1,65 @@
+﻿@model Dyg.Core.Model.Brand
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Sil</h2>
+        <h3>Silmek istediğinizden emin misiniz?Bu işlem geri alınamaz!!</h3>
+        <h4>Marka</h4>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PublishDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsPublished)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsPublished)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdateDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UpdateDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedBy)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Sil" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-warning">Listeye Geri Dön</a>
+        </form>
+    </div>
+</div>
